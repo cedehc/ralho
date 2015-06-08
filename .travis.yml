@@ -1,0 +1,14 @@
+language: python
+services:
+    - mongodb
+python:
+    - "2.7"
+install:
+    - pip install -q django
+    - pip install -q fabric
+    - pip install -q mongoengine
+    - python setup.py -q install
+before_script:
+    - python manage.py migrate --noinput
+script:
+    - python manage.py test
